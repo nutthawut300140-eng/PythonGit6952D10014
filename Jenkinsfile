@@ -28,19 +28,19 @@ pipeline {
                 bat 'python --version'
                 bat 'python -m venv %VENV_DIR%'
                 bat '%VENV_DIR%\\Scripts\\python -m pip install --upgrade pip'
-                bat '%VENV_DIR%\\Scripts\\pip install -r requirements.txt'
+                bat '%VENV_DIR%\\Scripts\\python -m pip install -r requirements.txt'
             }
         }
 
         stage('Lint') {
             steps {
-                bat '%VENV_DIR%\\Scripts\\flake8 --max-line-length=100 --exclude=%VENV_DIR% .'
+                bat '%VENV_DIR%\\Scripts\\python -m flake8 --max-line-length=100 --exclude=%VENV_DIR% .'
             }
         }
 
         stage('Test') {
             steps {
-                bat '%VENV_DIR%\\Scripts\\pytest -v --junitxml=reports\\results.xml'
+                bat '%VENV_DIR%\\Scripts\\python -m pytest -v --junitxml=reports\\results.xml'
             }
         }
 
