@@ -56,7 +56,9 @@ pipeline {
                 bat 'if not exist "%DEPLOY_DIR%" mkdir "%DEPLOY_DIR%"'
                 bat 'copy /Y helloworld.py "%DEPLOY_DIR%\\"'
                 bat 'copy /Y profile.py "%DEPLOY_DIR%\\"'
+                bat 'copy /Y calculator.py "%DEPLOY_DIR%\\"'
                 bat 'python "%DEPLOY_DIR%\\helloworld.py"'
+                bat 'python "%DEPLOY_DIR%\\calculator.py"'
             }
         }
     }
